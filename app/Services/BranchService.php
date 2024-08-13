@@ -28,7 +28,7 @@ class BranchService
      */
     public function updateBranch(array $data)
     {
-        $branch = Branch::find($data['id']);
+        $branch = Branch::where('id', $id)->first();
         return $branch->update($data);
     }
 
