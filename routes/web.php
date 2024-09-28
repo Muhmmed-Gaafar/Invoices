@@ -18,20 +18,20 @@ use App\Http\Controllers\Invoices_Report;
 use App\Http\Controllers\Customers_Report;
 use App\Http\Controllers\AdminController;
 
-Route::get('/', function () {
-    return redirect('dashboard');
-});
+require __DIR__.'/auth.php';
 
+Route::get('/', function () {
+    return view('auth.login');
+});
+Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
-Route::resource([
-    '/sections', SectionsController::class,
-    '/products', ProductsController::class,
-    'invoiceAttachments', InvoiceAttachmentsController::class,
-    'archive', InvoiceAchiveController::class,
-    '/branch', BranchController::class,
-]);
+Route::resource('/sections', SectionsController::class);
+Route::resource('/products', ProductsController::class);
+Route::resource('/invoiceAttachments', InvoiceAttachmentsController::class);
+Route::resource('/archive', InvoiceAchiveController::class);
+Route::resource('/branch', BranchController::class);
 
 //Route::get('/branch', [BranchController::class , 'index'])->name('branches.index');
 //Route::POST('/branch', [BranchController::class , 'store'])->name('branches.store');
@@ -100,7 +100,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/all-notifications', [NotificationController::class, 'allNotifications'])->name('all-notifications');
 });
 
-require __DIR__.'/auth.php';
+
 
 
 
@@ -119,3 +119,7 @@ require __DIR__.'/auth.php';
 //Route::get('unreadNotifications', [InvoicesController::class, 'unreadNotifications'])->name('unreadNotifications');
 //
 //Route::get('/{page}', [AdminController::class, 'index']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

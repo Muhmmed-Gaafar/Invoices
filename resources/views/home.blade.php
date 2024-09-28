@@ -11,7 +11,30 @@
 @section('page-header')
     <!-- breadcrumb -->
     <div class="breadcrumb-header justify-content-between">
-    Welcome Back
+        <div class="left-content">
+            <div>
+                <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1">Hi, welcome back!</h2>
+                <p class="mg-b-0">Sales monitoring dashboard template.</p>
+            </div>
+        </div>
+        <div class="main-dashboard-header-right">
+            <div>
+                <label class="tx-13">Customer Ratings</label>
+                <div class="main-star">
+                    <i class="typcn typcn-star active"></i> <i class="typcn typcn-star active"></i> <i
+                        class="typcn typcn-star active"></i> <i class="typcn typcn-star active"></i> <i
+                        class="typcn typcn-star"></i> <span>(14,873)</span>
+                </div>
+            </div>
+            <div>
+                <label class="tx-13">Online Sales</label>
+                <h5>563,275</h5>
+            </div>
+            <div>
+                <label class="tx-13">Offline Sales</label>
+                <h5>783,675</h5>
+            </div>
+        </div>
     </div>
     <!-- /breadcrumb -->
 @endsection
@@ -65,15 +88,15 @@
                                 <span class="text-white op-7">
 
                                     @php
-                                    $count_all= \App\Models\Invoice::count();
-                                    $count_invoices2 = \App\Models\Invoice::where('Value_Status', 2)->count();
+                                        $count_all= \App\Models\Invoice::count();
+                                        $count_invoices2 = \App\Models\Invoice::where('Value_Status', 2)->count();
 
-                                    if($count_invoices2 == 0){
-                                       echo $count_invoices2 = 0;
-                                    }
-                                    else{
-                                       echo $count_invoices2 = $count_invoices2 / $count_all *100;
-                                    }
+                                        if($count_invoices2 == 0){
+                                           echo $count_invoices2 = 0;
+                                        }
+                                        else{
+                                           echo $count_invoices2 = $count_invoices2 / $count_all *100;
+                                        }
                                     @endphp
 
                                 </span>
@@ -99,7 +122,7 @@
 
                                 </h4>
                                 <p class="mb-0 tx-12 text-white op-7">
-                                    {{\App\Models\Invoice::where('Value_Status', 1)->count() }}
+                                    {{ \App\Models\Invoice::where('Value_Status', 1)->count() }}
                                 </p>
                             </div>
                             <span class="float-right my-auto mr-auto">
@@ -139,7 +162,7 @@
 
                                 </h4>
                                 <p class="mb-0 tx-12 text-white op-7">
-                                    {{ \App\Models\Invoice::where('Value_Status', 3)->count() }}
+                                    {{\App\Models\Invoice::where('Value_Status', 3)->count() }}
                                 </p>
                             </div>
                             <span class="float-right my-auto mr-auto">
@@ -168,33 +191,33 @@
     <!-- row closed -->
 
     <!-- row opened -->
-    <div class="row row-sm">
-        <div class="col-md-12 col-lg-12 col-xl-7">
-            <div class="card">
-                <div class="card-header bg-transparent pd-b-0 pd-t-20 bd-b-0">
-                    <div class="d-flex justify-content-between">
-                        <h4 class="card-title mb-0">نسبة احصائية الفواتير</h4>
-                        <i class="mdi mdi-dots-horizontal text-gray"></i>
-                    </div>
+{{--    <div class="row row-sm">--}}
+{{--        <div class="col-md-12 col-lg-12 col-xl-7">--}}
+{{--            <div class="card">--}}
+{{--                <div class="card-header bg-transparent pd-b-0 pd-t-20 bd-b-0">--}}
+{{--                    <div class="d-flex justify-content-between">--}}
+{{--                        <h4 class="card-title mb-0">نسبة احصائية الفواتير</h4>--}}
+{{--                        <i class="mdi mdi-dots-horizontal text-gray"></i>--}}
+{{--                    </div>--}}
 
-                </div>
-                <div class="card-body" style="width: 70%">
-                    {!! $chartjs->render() !!}
+{{--                </div>--}}
+{{--                <div class="card-body" style="width: 70%">--}}
+{{--                    {!! $chartjs->render() !!}--}}
 
-                </div>
-            </div>
-        </div>
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
 
 
-        <div class="col-lg-12 col-xl-5">
-            <div class="card card-dashboard-map-one">
-                <label class="main-content-label">نسبة احصائية الفواتير</label>
-                <div class="" style="width: 100%">
-                    {!! $chartjs_2->render() !!}
-                </div>
-            </div>
-        </div>
-    </div>
+{{--        <div class="col-lg-12 col-xl-5">--}}
+{{--            <div class="card card-dashboard-map-one">--}}
+{{--                <label class="main-content-label">نسبة احصائية الفواتير</label>--}}
+{{--                <div class="" style="width: 100%">--}}
+{{--                    {!! $chartjs_2->render() !!}--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
     <!-- row closed -->
     </div>
     </div>
