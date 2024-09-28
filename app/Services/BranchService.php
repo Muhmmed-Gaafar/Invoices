@@ -26,7 +26,7 @@ class BranchService
     /**
      * Update an existing branch.
      */
-    public function updateBranch(array $data)
+    public function updateBranch($id ,  $data)
     {
         $branch = Branch::where('id', $id)->first();
         return $branch->update($data);
@@ -35,9 +35,9 @@ class BranchService
     /**
      * Delete a branch.
      */
-    public function deleteBranch( Request $request )
+    public function deleteBranch( $id , $request )
     {
-        $branch = Branch::find($request->id);
+        $branch = Branch::where('id', $id)->first();
         return $branch->delete();
     }
 }

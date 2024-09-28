@@ -25,18 +25,14 @@ Route::get('/', function () {
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
+Route::resource([
+    '/sections', SectionsController::class,
+    '/products', ProductsController::class,
+    'invoiceAttachments', InvoiceAttachmentsController::class,
+    'archive', InvoiceAchiveController::class,
+    '/branch', BranchController::class,
+]);
 
-Route::resource('/sections', SectionsController::class);
-
-Route::get('/home', [HomeController::class , 'index'])->name('home');
-
-Route::resource('/products', ProductsController::class);
-
-Route::resource('invoiceAttachments', InvoiceAttachmentsController::class);
-
-Route::resource('archive', InvoiceAchiveController::class);
-
-//Route::resource('/branch', BranchController::class);
 //Route::get('/branch', [BranchController::class , 'index'])->name('branches.index');
 //Route::POST('/branch', [BranchController::class , 'store'])->name('branches.store');
 //Route::PATCH('/branch/{id}', [BranchController::class , 'update'])->name('branches.update');
